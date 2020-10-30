@@ -1,5 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import FullScreen from './components/FullScreen'
+import logo from './logo.svg';
+import './App.css';
+import Facial from './components/Facial';
 
 function App() {
  
@@ -15,6 +18,8 @@ function App() {
         document.querySelector(".fss").requestFullscreen()
       }}></button>
       
+    
+      <Facial/>
     </div>
   )
 }
