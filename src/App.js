@@ -3,6 +3,7 @@ import FullScreen from './components/FullScreen'
 // import logo from './logo.svg';
 // import './App.css';
 import Facial from './components/Facial';
+import StoT from './components/StoT';
 
 function App() {
  
@@ -16,9 +17,7 @@ function App() {
       setTabSwitch(document.visibilityState);
       console.log(tabSwitch);
     })
-    // return () => {
-    //   cleanup
-    // }
+    
   }, [])
 
   useEffect(()=>{
@@ -32,6 +31,7 @@ function App() {
       <input type="text " />
       <div className="fss">
       {/* <FullScreen/> */}
+      <StoT/>
       </div>
       <button onChange={()=>{
         document.querySelector(".fss").requestFullscreen()
