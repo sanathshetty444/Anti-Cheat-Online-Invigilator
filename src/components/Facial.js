@@ -1,7 +1,7 @@
 import React from 'react'
 import Webcam from 'react-webcam'
 import resemble from 'resemblejs'
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import sanath from '../sanath.jpeg'
 import ganesh from '../ganesh.jpeg'
 const compareImages = require("resemblejs/compareImages");
@@ -45,7 +45,7 @@ function Facial() {
                 ignore: "antialiasing"
             };
             const data =  compareImages(
-                imageSrc,logo,
+                imageSrc,sanath,
                 options
             );
             console.log(data)
