@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.1",
     "react-confirm-alert": "^2.6.2",
+    "react-chatbot-kit": "^1.1.0",
     "react-dom": "^17.0.1",
     "react-full-screen": "^0.3.1",
     "react-router-dom": "^5.2.0",

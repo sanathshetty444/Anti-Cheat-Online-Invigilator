@@ -8,6 +8,7 @@ import QuizPage from './screens/QuizPage';
 // import './App.css';
 // import Facial from './components/Facial';
 // import StoT from './components/StoT';
+import ChatbotMain from './Chatbot/ChatbotMain';
 
 function App() {
  
@@ -20,6 +21,7 @@ function App() {
       <Route exact path='/' ><LoginPage/></Route>
       <Route exact path='/quiz' ><QuizPage/></Route>
       </BrowserRouter>
+      <ChatbotMain/>
     </div>
   )
 }
