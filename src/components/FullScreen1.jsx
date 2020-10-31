@@ -38,11 +38,12 @@ function FullScreen1() {
         console.log('>>>>><<<<<<',esc)
         if(esc)
           {
-            // confirm("R u sure??")
-            // console.log(a)
+            window.onbeforeunload = function(e) {
+              return "Sure you want to leave?";
+          };
           }
         
-        console.log(fullScreenMode);
+        // console.log(fullScreenMode);
       }}>
         <div>
           {!s && <QuizForm exit={handle.exit} esc={esc} />}
