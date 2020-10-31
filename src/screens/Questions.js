@@ -1,17 +1,24 @@
 import React from 'react'
 import StoT from '../components/StoT'
 function Questions({q,answers,sA}) {
-    const [answer,setAnsewer]=React.useState('');
-    console.log(answer);
+    const [answer,setAnswer]=React.useState('');
+    const [lol,slol]=React.useState('');
+    const ref=React.useRef()
+    // console.log(answer);
     function change(){
-        sA([...answers,{q:q,a:answer}])
-        console.log("llollol")
+        setAnswer(ref.current.value)
 
+    }
+    function submit(){
+        
+        sA((prev)=>[...prev,{q:q,a:answer}])
+        console.log(answers);
     }
     return (
         <div>
-            <input type="text" value={answer} onChange={change}/>
-            <StoT answer={answer} setAnswer={setAnsewer}/>
+            <input type="text" ref={ref} value={answers.a} onChange={change}/>
+            <StoT answer={answer} setAnswer={setAnswer}/>
+            <button type ="button" onClick={submit}>Submit Your Response</button>
         </div>
     )
 }

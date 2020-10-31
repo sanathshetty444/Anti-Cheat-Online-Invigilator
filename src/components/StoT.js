@@ -51,11 +51,11 @@ function StoT({answer,setAnswer}) {
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
     setNote('')
-    setAnswer(note)
-    setIsListening(prevState => !prevState)
+    setAnswer()
+    
   }
   function toggle(){
-    
+    handleSaveNote();
     setIsListening(prevState => !prevState)
     
   }
@@ -66,10 +66,8 @@ function StoT({answer,setAnswer}) {
         <div className="box">
          
           {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
-          <button onClick={handleSaveNote} disabled={!note}>
-            Save Note
-          </button>
-          <button type='button' onClick={toggle}>
+          
+          <button className="btn btn-primary"  type='button' onClick={toggle}>
             Start/Stop
           </button>
           <p>{note}</p>
