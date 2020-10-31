@@ -20,6 +20,7 @@ function FullScreen1() {
     
   }
   return (
+    
     <div>
       <h1 className="text-center">Quiz Name</h1>
       <h3 className='ml-3'>Welcome Name</h3>
@@ -29,26 +30,25 @@ function FullScreen1() {
           Start Quiz
         </button>
       </div>
- 
-      <FullScreen handle={handle} onChange={()=>{
+      
+      <FullScreen  handle={handle} onChange={()=>{
         setFullScreenMode(prevprops=>!prevprops)
         setesc(prev=>!prev)
         
         sets(prevprops=>!prevprops)
         console.log('>>>>><<<<<<',esc)
-        if(esc)
-          {
-            window.onbeforeunload = function(e) {
-              return "Sure you want to leave?";
-          };
-          }
+        
         
         // console.log(fullScreenMode);
       }}>
-        <div>
+        
+       
+        
+        <div >
           {!s && <QuizForm exit={handle.exit} esc={esc} />}
          
         </div>
+        
       </FullScreen>
     </div>
   );

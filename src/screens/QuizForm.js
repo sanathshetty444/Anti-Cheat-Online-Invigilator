@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import StoT from '../components/StoT'
 import Q from '../screens/Questions'
 import { confirmAlert } from 'react-confirm-alert';
+import ReactPageScroller from "react-page-scroller";
+
 function QuizForm({exit,esc}) {
     
     const[answers,sA]=React.useState([{q:"",a:""}])
@@ -13,39 +15,54 @@ function QuizForm({exit,esc}) {
 
     }
     return (
-        <div>
-            
-            <button onClick={submit} >Exit</button>
-            {!exittoggle && <div>
+        <div >
+            <div className='d-flex flex-column justify-content-center align-items-center'>
+                <div className=" h2 text-light">Questions </div>
+                <button className='btn btn-danger ' style={{marginLeft:'96%',marginTop:'-3%'}} onClick={submit} >Exit</button>
+             </div>
+            {!exittoggle && <div style={{marginLeft:'92%'}}>
                 <p>R u Sure</p>
-                <button onClick={exit}>yes</button>
-                <button onClick={submit}>no</button>
+                <button className='btn btn-danger'  onClick={submit} onClick={exit}>yes</button> &emsp;
+                <button className='btn btn-info' onClick={submit}>no</button>
             </div>}
-            
-            <form action="" style={{backgroundColor:'white'}}>
-                <p>Question 1 : </p>
-                <Q q='q1' answers={answers} sA={sA} />
-                <p>Question 2 : </p>
-                <Q q='q2'answers={answers} sA={sA}/>
-                {/* <p>Question 3 : </p>
-                <Q q='q3'answers={answers} sA={sA}/>
-                <p>Question 4 : </p>
-                <Q q='q4'answers={answers} sA={sA}/>
-                <p>Question 5 : </p>
-                <Q q='q5'answers={answers} sA={sA}/>
-                <p>Question 6 : </p>
-                <Q q='q6'answers={answers} sA={sA}/>
-                <p>Question 7 : </p>
-                <Q q='q6'answers={answers} sA={sA}/> */}
-                <button onClick={(e)=>{
-                    e.preventDefault();
-                    sA((prev)=>[...prev,{q:"",a:""}])
-                    console.log(answers)
-                
-                }
+            <div style={{height:'100vh'}} className="d-flex justify-content-center align-items-center flex-column ">
+                <form action="" style={{backgroundColor:'white',paddingLeft:'5%',paddingTop:'5%'}}>
+                    <ReactPageScroller containerHeight={'80vh'}	>
+                    <div>
+                    <p>Question 1 : </p>
+                    <Q q='q1' answers={answers} sA={sA} />
                     
-                }>Submit</button>
+                    <p>Question 2 : </p>
+                    <Q q='q2'answers={answers} sA={sA}/>
+                    <p>Question 3 : </p>
+                    <Q q='q3'answers={answers} sA={sA}/>
+                    <p>Question 4 : </p>
+                    <Q q='q4'answers={answers} sA={sA}/>
+                    
+                    
+                    <p>Question 5 : </p>
+                    <Q q='q5'answers={answers} sA={sA}/>
+                    </div>
+                    <div>
+                    <p>Question 6 : </p>
+                    
+                    <Q q='q6'answers={answers} sA={sA}/>
+                    <p>Question 7 : </p>
+                    <Q q='q7'answers={answers} sA={sA}/>
+                    
+                    <button onClick={(e)=>{
+                        e.preventDefault();
+                        sA((prev)=>[...prev,{q:"",a:""}])
+                        console.log(answers)
+                    
+                    }
+                        
+                    }>Submit</button>
+                    </div>
+                </ReactPageScroller>
             </form>
+            </div>
+            
             
            
         </div>
