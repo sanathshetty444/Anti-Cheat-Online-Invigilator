@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import Facial from './Facial';
+import StoT from './StoT';
 
 function FullScreen1() {
   const handle = useFullScreenHandle();
@@ -22,9 +24,9 @@ function FullScreen1() {
         setFullScreenMode(prevprops=>!prevprops)
         console.log(fullScreenMode);
       }}>
-        <div style={{backgroundColor:"red"}}>
-              dsfjkjsdhkjhskjdkjldjfslkldsjfkljk
-              dfksdfjkljsdfkl
+        <div >
+              <Facial/>
+              <StoT/>
         </div>
       </FullScreen>
     </div>
