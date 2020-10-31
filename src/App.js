@@ -4,6 +4,7 @@ import FullScreen1 from './components/FullScreen1'
 // import './App.css';
 // import Facial from './components/Facial';
 // import StoT from './components/StoT';
+import ChatbotMain from './Chatbot/ChatbotMain';
 
 function App() {
  
@@ -31,6 +32,7 @@ function App() {
       <input type="text " />
       <div className="fss">
       <FullScreen1/>
+      <ChatbotMain/>
   
       {/* <StoT/> */}
       </div>
