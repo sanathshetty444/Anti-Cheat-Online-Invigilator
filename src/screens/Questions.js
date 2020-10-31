@@ -16,7 +16,7 @@ function Questions({q,answers,sA}) {
     }
     return (
         <div>
-            <input type="text" ref={ref} value={answers.a} onChange={change}/>
+            <input type="text" ref={ref} value={answer} onChange={change}/>
             <StoT answer={answer} setAnswer={setAnswer}/>
             <button type ="button" onClick={submit}>Submit Your Response</button>
         </div>

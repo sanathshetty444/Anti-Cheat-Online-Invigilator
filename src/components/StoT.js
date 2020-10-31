@@ -51,7 +51,7 @@ function StoT({answer,setAnswer}) {
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
     setNote('')
-    setAnswer()
+    setAnswer(note)
     
   }
   function toggle(){

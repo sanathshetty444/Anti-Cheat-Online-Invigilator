@@ -16,7 +16,7 @@ function QuizForm({exit,esc}) {
         <div>
             
             <button onClick={submit} >Exit</button>
-            {exittoggle && <div>
+            {!exittoggle && <div>
                 <p>R u Sure</p>
                 <button onClick={exit}>yes</button>
                 <button onClick={submit}>no</button>
