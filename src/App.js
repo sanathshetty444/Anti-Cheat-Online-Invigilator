@@ -4,6 +4,7 @@ import TabSwitch from './components/TabSwitch'
 import LoginPage from './screens/LoginPage'
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import QuizPage from './screens/QuizPage';
+import Camera from './components/Camera'
 // import logo from './logo.svg';
 // import './App.css';
 // import Facial from './components/Facial';
@@ -20,6 +21,7 @@ function App() {
 
       <Route exact path='/' ><LoginPage/></Route>
       <Route exact path='/quiz' ><QuizPage/></Route>
+
       </BrowserRouter>
       <ChatbotMain/>
     </div>
