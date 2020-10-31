@@ -4,8 +4,13 @@ import resemble from 'resemblejs'
 // import logo from '../logo.svg';
 import sanath from '../sanath.jpeg'
 import ganesh from '../ganesh.jpeg'
+import QuizPage from '../screens/QuizPage'
+import {Link} from 'react-router-dom'
 const compareImages = require("resemblejs/compareImages");
 function Facial() {
+    const styles={
+
+    }
     const videoConstraints = {
         width: 380,
         height: 220,
@@ -18,6 +23,7 @@ function Facial() {
         
         const webcamRef = React.useRef(null);
 
+        const [message,setmessage]=React.useState('');
         
 
       
@@ -44,16 +50,24 @@ function Facial() {
                 scaleToSameSize: true,
                 ignore: "antialiasing"
             };
-            const data =  compareImages(
-                imageSrc,sanath,
+             compareImages(
+                imageSrc,imageSrc,
                 options
-            );
-            console.log(data)
+            ).then(result=>{
+              console.log(result.misMatchPercentage);
+              if(result.misMatchPercentage<30){
+                setmessage('Successful')
+              }
+              else{
+                setmessage('Unsuccessful')
+              }
+            });
+            
         },
           [imgSrc]
         );
     return (
-        <div>
+        <div style={{height:'100vh',width:'100vw'}} className='d-flex justify-content-center align-items-center flex-column '>
            <Webcam
             audio={false}
             height={220}
@@ -61,15 +75,16 @@ function Facial() {
             screenshotFormat="image/jpeg"
             width={380}
             videoConstraints={videoConstraints}
-        />
-            <button onClick={capture}>Capture photo</button>
+        className='d-block '/>
+            <button className="btn btn-primary my-5" onClick={capture}>Capture photo</button>
             
       {imgSrc && (
         <img
           src={imgSrc}
         />
       )}
-      
+        {message=='Successful' &&   <Link className="nav-link" style={{color:"greenyellow"}} to="/quiz"><button className='btn btn-success'>Next</button></Link>}
+        
         </div>
     )
 }

@@ -9,7 +9,7 @@ mic.continuous = true
 mic.interimResults = true
 mic.lang = 'en-US'
 
-function StoT() {
+function StoT({answer,setAnswer}) {
   const [isListening, setIsListening] = useState(false)
   const [note, setNote] = useState(null)
   const [savedNotes, setSavedNotes] = useState([])
@@ -40,7 +40,7 @@ function StoT() {
         .map(result => result[0])
         .map(result => result.transcript)
         .join('')
-      console.log(transcript)
+      // console.log(transcript)
       setNote(transcript)
       mic.onerror = event => {
         console.log(event.error)
@@ -51,29 +51,30 @@ function StoT() {
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
     setNote('')
+    setAnswer(note)
+    setIsListening(prevState => !prevState)
   }
-
+  function toggle(){
+    
+    setIsListening(prevState => !prevState)
+    
+  }
   return (
     <>
-      <h1>Voice Notes</h1>
+     
       <div className="container">
         <div className="box">
-          <h2>Current Note</h2>
+         
           {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
           <button onClick={handleSaveNote} disabled={!note}>
             Save Note
           </button>
-          <button onClick={() => setIsListening(prevState => !prevState)}>
+          <button type='button' onClick={toggle}>
             Start/Stop
           </button>
           <p>{note}</p>
         </div>
-        <div className="box">
-          <h2>Notes</h2>
-          {savedNotes.map(n => (
-            <p key={n}>{n}</p>
-          ))}
-        </div>
+        
       </div>
     </>
   )

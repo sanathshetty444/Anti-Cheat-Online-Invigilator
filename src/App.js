@@ -1,5 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import FullScreen1 from './components/FullScreen1'
+import TabSwitch from './components/TabSwitch'
+import LoginPage from './screens/LoginPage'
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import QuizPage from './screens/QuizPage';
 // import logo from './logo.svg';
 // import './App.css';
 // import Facial from './components/Facial';
@@ -7,35 +11,15 @@ import FullScreen1 from './components/FullScreen1'
 
 function App() {
  
-  const [tabSwitch,setTabSwitch]=useState("");
-  const [tsn,setTsn]=useState(0);
-
-
-  useEffect(() => {
-    document.addEventListener("visibilitychange",()=>{
-      document.title=document.visibilityState;
-      setTabSwitch(document.visibilityState);
-      console.log(tabSwitch);
-    })
-    
-  }, [])
-
-  useEffect(()=>{
-    setTsn(prev=>prev+0.5)
-    console.log(tsn);
-  },[tabSwitch])
+ 
 // akmklasmcklamck
   return (
     <div >
-      <h1>This is the main page</h1>
-      <input type="text " />
-      <div className="fss">
-      <FullScreen1/>
-  
-      {/* <StoT/> */}
-      </div>
-     
-      {/* <Facial/> */}
+      <BrowserRouter>
+
+      <Route exact path='/' ><LoginPage/></Route>
+      <Route exact path='/quiz' ><QuizPage/></Route>
+      </BrowserRouter>
     </div>
   )
 }
