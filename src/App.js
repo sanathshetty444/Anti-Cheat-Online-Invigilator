@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import FullScreen from './components/FullScreen'
+import FullScreen1 from './components/FullScreen1'
 // import logo from './logo.svg';
 // import './App.css';
-import Facial from './components/Facial';
-import StoT from './components/StoT';
+// import Facial from './components/Facial';
+// import StoT from './components/StoT';
 
 function App() {
  
@@ -30,15 +30,12 @@ function App() {
       <h1>This is the main page</h1>
       <input type="text " />
       <div className="fss">
-      {/* <FullScreen/> */}
-      <StoT/>
+      <FullScreen1/>
+  
+      {/* <StoT/> */}
       </div>
-      <button onChange={()=>{
-        document.querySelector(".fss").requestFullscreen()
-      }}></button>
-      
-    
-      <Facial/>
+     
+      {/* <Facial/> */}
     </div>
   )
 }
