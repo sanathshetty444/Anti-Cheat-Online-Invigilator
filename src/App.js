@@ -24,7 +24,7 @@ function App() {
     setTsn(prev=>prev+0.5)
     console.log(tsn);
   },[tabSwitch])
-
+// akmklasmcklamck
   return (
     <div >
       <h1>This is the main page</h1>
