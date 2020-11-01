@@ -96,7 +96,7 @@ function QuizForm({exit,esc}) {
             </div>
             
             
-           
+           {/* kdnsknas */}
         </div>
     )
 }
