@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        canvas{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <video id="videoInput" width="720" height="550" muted controls>
+
+    <script defer async src="./js/face-api.min.js"></script>
+    <script defer async src="./js/script.js"></script>
+    <script> 
+        function playVideo() { 
+            $('#videoInput').trigger('play'); 
+        } 
+        function pauseVideo() { 
+            $('#videoInput').trigger('pause'); 
+        } 
+    </script> 
+    <script>
+       document.readyState(setTimeout(function(){
+           pauseVideo();
+           playVideo();
+           console.log("lol");
+       },10000)) 
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+</body>
+</html>

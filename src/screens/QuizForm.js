@@ -3,6 +3,7 @@ import StoT from '../components/StoT'
 import Q from '../screens/Questions'
 import { confirmAlert } from 'react-confirm-alert';
 import ReactPageScroller from "react-page-scroller";
+import Axios from 'axios';
 
 function QuizForm({exit,esc}) {
     
@@ -53,7 +54,28 @@ function QuizForm({exit,esc}) {
                     <button onClick={(e)=>{
                         e.preventDefault();
                         sA((prev)=>[...prev,{q:"",a:""}])
-                        console.log(answers)
+                        
+                        let new_answers=answers.reverse();
+                        // // var arr = ["X_row7", "X_row4", "X_row6", "X_row10", "X_row8", "X_row9", "X_row11", "X_row7", "X_row4", "X_row6", "X_row10", "X_row8", "X_row9", "X_row11", "X_row7", "X_row4", "X_row6", "X_row10", "X_row8", "X_row9", "X_row11", "X_row7", "X_row4", "X_row6", "X_row10", "X_row8", "X_row9", "X_row11", "X_row7", "X_row4", "X_row6", "X_row10", "X_row8", "X_row9", "X_row11", "X_row7", "X_row4", "X_row6", "X_row10", "X_row8", "X_row9", "X_row11"];
+
+                        // var filteredArray = new_answers.filter(function(item, pos){
+                        // return new_answers.indexOf(item.q)== pos; 
+                        // });
+                        // new_answers = new Set(new_answers)
+                        let newer=[];
+                        const unique = [...new Set(new_answers.map(item => item.q))];
+                        let j=0;
+                        for(let i=0;i<new_answers.length;i++){
+                            if(unique[j]==new_answers[i].q){
+                                newer.push(new_answers[i])
+                                j++
+                            }
+                        }
+                        console.log(newer)
+                        Axios.post('/answers',newer)
+                        .then(r=>{
+                            console.log(r)
+                        })
                     
                     }
                         

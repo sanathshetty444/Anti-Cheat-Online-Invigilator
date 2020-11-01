@@ -7,7 +7,7 @@ import Camera from '../components/Camera'
 function QuizPage() {
     return (
         <div>
-            <Camera />
+            {/* <Camera /> */}
             {/* Once You click on start quiz there is no turning back */}
             <TabSwitch/>
             <Fullscreen/>

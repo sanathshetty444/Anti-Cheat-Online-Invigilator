@@ -1,11 +1,12 @@
 import React from 'react'
 import Webcam from 'react-webcam'
-import resemble from 'resemblejs'
+// import resemble from 'resemblejs'
 // import logo from '../logo.svg';
-import sanath from '../sanath.jpeg'
+// import sanath from '../sanath.jpeg'
 import ganesh from '../ganesh.jpeg'
-import QuizPage from '../screens/QuizPage'
+// import QuizPage from '../screens/QuizPage'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 const compareImages = require("resemblejs/compareImages");
 function Facial() {
     const styles={
@@ -50,6 +51,10 @@ function Facial() {
                 scaleToSameSize: true,
                 ignore: "antialiasing"
             };
+            axios.post('/image',{'data':imageSrc})
+            .then(r=>{
+              console.log(r.data)
+            })
              compareImages(
                 imageSrc,imageSrc,
                 options
@@ -57,11 +62,13 @@ function Facial() {
               console.log(result.misMatchPercentage);
               if(result.misMatchPercentage<30){
                 setmessage('Successful')
+
               }
               else{
                 setmessage('Unsuccessful')
               }
             });
+
             
         },
           [imgSrc]
@@ -83,7 +90,7 @@ function Facial() {
           src={imgSrc}
         />
       )}
-        {message=='Successful' &&   <Link className="nav-link" style={{color:"greenyellow"}} to="/quiz"><button className='btn btn-success'>Next</button></Link>}
+        {message=='Successful'?   <Link className="nav-link" style={{color:"greenyellow"}} to="/quiz"><button className='btn btn-success'>Next</button></Link>: <div>{message}</div>}
         
         </div>
     )

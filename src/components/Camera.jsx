@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react'
 const faceapi =require('face-api.js')
-const canvas = require('canvas');
+// const canvas = require('canvas');
 // faceapi.env.monkeyPatch({ canvas, Image })
 // global.Blob = require('blob');
 // export default function Camera(){
@@ -56,13 +56,13 @@ export default class Camera extends Component {
     constructor(props) {
       super(props);
       this.videoTag = React.createRef()
-
+      this.video=""
 
       var promise = new Promise(function(resolve, reject) {
         // call resolve if the method succeeds
-        faceapi.nets.faceRecognitionNet.loadFromUri('../models')
-        faceapi.nets.faceLandmark68Net.loadFromUri('../models')
-        faceapi.nets.ssdMobilenetv1.loadFromUri('../models')
+        faceapi.nets.faceRecognitionNet.loadFromUri('/models')
+        faceapi.nets.faceLandmark68Net.loadFromUri('/models')
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/models')
         resolve();
       })
       promise.then(this.recognizeFaces(this))
@@ -77,13 +77,13 @@ export default class Camera extends Component {
                 const descriptions = []
                 for(let i=1; i<=2; i++) {
 
-                    // const img = await faceapi.fetchImage('http://raw.githubusercontent.com/WebDevSimplified/Face-Recognition-Javascript/master/labeled_images/')
-                    const img = await canvas.loadImage(`./1.jpg`);
+                    const img = await faceapi.fetchImage(`http://localhost:3000/labeled_images/${label}/${i}.jpg`)
+                    // const img = await canvas.loadImage(`./1.jpg`);
                     
                     console.log(img+"image aagaya")
 
                     const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
-                    console.log(label + i + JSON.stringify(detections))
+                    // console.log(label + i + JSON.stringify(detections))
                     descriptions.push(detections.descriptor)
                 }
                 document.body.append(label+' Faces Loaded | ')
@@ -95,11 +95,11 @@ export default class Camera extends Component {
     async recognizeFaces() {
 
         const labeledDescriptors = await this.loadLabeledImages(this)
-        console.log(labeledDescriptors)
+        // console.log(labeledDescriptors)
         const faceMatcher = new faceapi.FaceMatcher(labeledDescriptors, 0.7)
     
     
-        this.video.addEventListener('play', async () => {
+        document.getElementById('myvideo').addEventListener('play', async () => {
             console.log('Playing')
             const canvas = faceapi.createCanvasFromMedia(this.video)
             document.body.append(canvas)
@@ -138,10 +138,14 @@ export default class Camera extends Component {
   
     componentDidMount() {
       // getting access to webcam
-     navigator.mediaDevices
-      .getUserMedia({video: true})
-      .then(stream => this.videoTag.current.srcObject = stream)
-      .catch(console.log);
+      
+      this.video = this.videoTag.current;
+      
+      const constraints = { video: true }
+      navigator.mediaDevices.getUserMedia(constraints)
+      .then(
+        (stream) => { this.video.srcObject = stream })
+    .catch(console.log);
     }
 
 
@@ -149,7 +153,7 @@ export default class Camera extends Component {
   
     render() {
       return (
-        <video 
+        <video id='myvideo'
           ref={this.videoTag}
           autoPlay
         />
