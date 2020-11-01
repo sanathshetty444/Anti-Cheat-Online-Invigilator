@@ -6,9 +6,16 @@ import ReactPageScroller from "react-page-scroller";
 import Axios from 'axios';
 
 function QuizForm({exit,esc}) {
+    const style={
+
+        background: "#2980B9",  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: "linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */"
     
+      }
     const[answers,sA]=React.useState([{q:"",a:""}])
     const [exittoggle,setexittoggle]=useState(true)
+    const [msg,setmsg]=useState(false)
     function submit(){
         
         setexittoggle(prev=>!prev)
@@ -26,32 +33,31 @@ function QuizForm({exit,esc}) {
                 <button className='btn btn-danger'  onClick={submit} onClick={exit}>yes</button> &emsp;
                 <button className='btn btn-info' onClick={submit}>no</button>
             </div>}
-            <div style={{height:'100vh'}} className="d-flex justify-content-center align-items-center flex-column ">
-                <form action="" style={{backgroundColor:'white',paddingLeft:'5%',paddingTop:'5%'}}>
+            <div style={{height:'100vh',}} className="d-flex justify-content-center align-items-center flex-column ">
+                <form action="" style={{background:'linear-gradient(90deg, rgba(249,254,255,1) 6%, rgba(4,179,195,1) 47%, rgba(0,212,255,1) 100%,transparent)',paddingLeft:'5%',paddingTop:'5%'}}>
                     <ReactPageScroller containerHeight={'80vh'}	>
-                    <div>
-                    <p>Question 1 : </p>
-                    <Q q='q1' answers={answers} sA={sA} />
+                    <div style={style}>
+                    <p>Question 1 :What does the government spend its money on? </p>
+                    <Q q='What does the government spend its money on?' answers={answers} sA={sA} />
                     
-                    <p>Question 2 : </p>
-                    <Q q='q2'answers={answers} sA={sA}/>
-                    <p>Question 3 : </p>
-                    <Q q='q3'answers={answers} sA={sA}/>
-                    <p>Question 4 : </p>
-                    <Q q='q4'answers={answers} sA={sA}/>
+                    <p>Question 2 : Who does the government owe money to? </p>
+                    <Q q='Who does the government owe money to?'answers={answers} sA={sA}/>
+                    <p>Question 3 : Where does the money come from? </p>
+                    <Q q=' Where does the money come from?'answers={answers} sA={sA}/>
+                    <p>Question 4 : Does a devaluation help the economy?</p>
+                    <Q q='Does a devaluation help the economy?'answers={answers} sA={sA}/>
                     
                     
-                    <p>Question 5 : </p>
-                    <Q q='q5'answers={answers} sA={sA}/>
+                    <p>Question 5 : What is the importance of economics? </p>
+                    <Q q='What is the importance of economics?'answers={answers} sA={sA}/>
                     </div>
                     <div>
-                    <p>Question 6 : </p>
+                    <p>Question 6 : Does globalisation help or hinder developing countries?</p>
+                    <Q q='Does globalisation help or hinder developing countries?'answers={answers} sA={sA}/>
+                    <p>Question 7 : Should higher education be free? </p>
+                    <Q q='Should higher education be free?'answers={answers} sA={sA}/>
                     
-                    <Q q='q6'answers={answers} sA={sA}/>
-                    <p>Question 7 : </p>
-                    <Q q='q7'answers={answers} sA={sA}/>
-                    
-                    <button onClick={(e)=>{
+                    <button className="btn-primary" onClick={(e)=>{
                         e.preventDefault();
                         sA((prev)=>[...prev,{q:"",a:""}])
                         
@@ -76,11 +82,15 @@ function QuizForm({exit,esc}) {
                         .then(r=>{
                             console.log(r)
                         })
+                        setmsg(true)
                     
                     }
+                    
                         
                     }>Submit</button>
+                    {msg && <div className="text-center bg-success">You may now Exit</div>}
                     </div>
+                    
                 </ReactPageScroller>
             </form>
             </div>

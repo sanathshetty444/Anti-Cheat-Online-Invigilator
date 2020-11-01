@@ -22,9 +22,9 @@ function FullScreen1() {
   return (
     
     <div>
-      <h1 className="text-center">Quiz Name</h1>
-      <h3 className='ml-3'>Welcome Name</h3>
-      <p className="ml-3 lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam nobis similique tempora!</p>
+      <h1 className="text-center">Economics</h1>
+      <h3 className='ml-3'>Welcome Sanath</h3>
+      <p className="ml-3 lead">Economics is the social science that studies how people interact with things of value; in particular, the production, distribution, and consumption of goods and services. Economics focuses on the behaviour and interactions of economic agents and how economies work.</p>
       <div className='col-12 d-flex justify-content-center '>
         <button className="btn btn-primary p-3" onClick={handle.enter}>
           Start Quiz

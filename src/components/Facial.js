@@ -9,6 +9,8 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 const compareImages = require("resemblejs/compareImages");
 function Facial() {
+    const [name,setname]=React.useState('')
+    const [roll,setroll]=React.useState('')
     const styles={
 
     }
@@ -75,6 +77,11 @@ function Facial() {
         );
     return (
         <div style={{height:'100vh',width:'100vw'}} className='d-flex justify-content-center align-items-center flex-column '>
+          <h2>Capture your pic for authentication</h2>
+          <input value={name} className="form-control" placeholder="Name" type='text' onChange={(e)=>setname(e.target.value)}/>
+          <br/>
+          <input value={roll} className="form-control" placeholder="Roll no" type='text' onChange={(e)=>setroll(e.target.value)}/>
+          <br/>
            <Webcam
             audio={false}
             height={220}
